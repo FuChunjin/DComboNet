@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1586876836776.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "CF6A4ACA",
+    "lastKnownWriteTime" : 1587296148,
+    "last_content_update" : 1587296148659,
+    "path" : "G:/lab/DCcomboNet/Rpackage/input_data/DComboNet/R/Prediction.R",
+    "project_path" : "R/Prediction.R",
+    "properties" : {
+        "cursorPosition" : "235,56",
+        "scrollLine" : "218"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

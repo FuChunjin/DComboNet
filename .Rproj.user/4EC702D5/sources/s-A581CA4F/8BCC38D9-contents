@@ -1,0 +1,427 @@
+suppressPackageStartupMessages(library(igraph))
+suppressPackageStartupMessages(library(data.table))
+suppressPackageStartupMessages(library(compiler))
+suppressPackageStartupMessages(library(Matrix))
+suppressPackageStartupMessages(library(reshape2))
+suppressPackageStartupMessages(library(Hmisc))
+suppressPackageStartupMessages(library(getopt))
+options(stringsAsFactors = F)
+
+
+command = matrix(c("load_dir",      "l", 1, "character",
+                   "resultdir",     "r", 1, "character",
+                   "model",         "M", 1, "character",
+                   "drugcandidate", "d", 2, "character",
+                   "CDK_FP",        "C", 2, "character",
+                   "pubchemFP",     "U", 2, "character",
+                   "MACCS_FP",      "m", 2, "character",
+                   "drugnetWeight", "w", 1, "logical",
+                   "featuretype",   "f", 1, "character",
+                   "drugtarget",    "t", 2, "character",
+                   "druggene",      "g", 2, "character",
+                   "dataset",       "s", 2, "character",
+                   "cellline",      "c", 2, "character",
+                   "treatment_time","i", 2, "character",
+                   "foldchange",    "F", 2, "numeric",
+                   "pvalue",        "p", 2, "numeric",
+                   "drugDEG",       "G", 2, "character",
+                   "drugDEP",       "P", 2, "character",
+                   "cancergene",    "T", 2, "character",
+                   "dtweight",      "1", 1, "numeric",
+                   "dgweight",      "2", 1, "numeric",
+                   "dDEGweight",    "3", 2, "numeric",
+                   "dgpweight",     "4", 1, "numeric",
+                   "dDEpweight",    "5", 2, "numeric",
+                   "gpweight",      "6", 1, "numeric",
+                   "x",             "x", 1, "numeric",
+                   "y",             "y", 1, "numeric",
+                   "z",             "z", 1, "numeric",
+                   "A",             "A", 1, "numeric",
+                   "B",             "B", 1, "numeric",
+                   "r",             "r", 1, "numeric"),
+                 byrow=T, ncol=4)
+
+
+args = getopt(command)
+load_dir = args$load_dir
+resultdir = args$resultdir
+model = args$model # "L2"
+drugcandidate = args$drugcandidate
+drugnetWeight = args$drugnetWeight
+featuretype = args$featuretype
+
+CDK_FP = args$CDK_FP
+pubchemFP = args$pubchemFP
+MACCS_FP = args$MACCS_FP
+drugtarget = args$drugtarget
+druggene = args$druggene
+dataset = args$dataset
+cellline = args$cellline
+treatment_time = args$treatment_time
+foldchange = args$foldchange
+pvalue = args$pvalue
+drugDEG = args$drugDEG
+drugDEP  = args$drugDEP
+cancergene = args$cancergene
+dtweight = args$dtweight
+dgweight = args$dgweight
+dDEGweight = args$dDEGweight
+dgpweight = args$dgpweight
+dDEpweight = args$dDEpweight
+gpweight = args$gpweight
+
+x = args$x
+y = args$y
+z = args$z
+A = args$A
+B = args$B
+r=args$r
+eta = 1
+
+
+setwd(load_dir)
+
+
+dir.create(resultdir)
+dir.create(paste0(resultdir,model,'_result/'))
+dir.create(paste0(resultdir,model,'_result/drugrank'))
+dir.create(paste0(resultdir,model,'_result/generank'))
+dir.create(paste0(resultdir,model,'_result/pathwayrank'))
+dir.create(paste0(resultdir,model,'_result/potential_net'))
+#drugseeds = readline('Which drug are you interested in? ')
+
+#Loading functions
+source(paste0(load_dir,'/DComboNet/R/DEG_DEpathway_preparation.R'))
+source(paste0(load_dir,'/DComboNet/R/DrugNetFeatures.R'))
+source(paste0(load_dir,'/DComboNet/R/DrugNet.R'))
+source(paste0(load_dir,'/DComboNet/R/DrugGeneNet.R'))
+source(paste0(load_dir,'/DComboNet/R/GeneNet.R'))
+source(paste0(load_dir,'/DComboNet/R/DrugPathwayNet.R'))
+source(paste0(load_dir,'/DComboNet/R/PathwayNet.R'))
+source(paste0(load_dir,'/DComboNet/R/GenePathwayNet.R'))
+source(paste0(load_dir,'/DComboNet/R/DrugGeneHeteroNet.R'))
+source(paste0(load_dir,'/DComboNet/R/RWR_fun.R'))
+source(paste0(load_dir,'/DComboNet/R/SeedsPreparation.R'))
+source(paste0(load_dir,'/DComboNet/R/Results_rank.R'))
+
+
+c.DrugNetFeature = compiler::cmpfun(DrugNetFeature)
+c.geneNet = compiler::cmpfun(geneNet)
+c.geneNet.Adj= compiler::cmpfun(geneNet.Adj)
+c.drugGeneNet.L1= compiler::cmpfun(drugGeneNet.L1)
+c.drugGeneNet.L2= compiler::cmpfun(drugGeneNet.L2)
+c.transitionMatrix = compiler::cmpfun(TransitionMatrix)
+
+#timestart<-Sys.time()
+print('----- Drug Net Features Calculating -----')
+
+if(is.null(drugcandidate)){
+
+  if(model == 'L1' | is.null(cellline)){
+
+    if(file.exists(paste0(load_dir,'drug_net/features.csv'))){
+
+      print('       The drug network features has been found in Pre-calculated L1 model       ')
+      drugnet_feature = read.csv(paste0(load_dir,'drug_net/features.csv'))
+
+    }else{
+
+      drugnet_feature = c.DrugNetFeature(druglist = drugcandidate,
+                                         model = model,
+                                         cellline = cellline,
+                                         CDK_FP = CDK_FP,
+                                         pubchemFP = pubchemFP,
+                                         MACCS_FP = MACCS_FP,
+                                         load_dir = load_dir)
+    }
+
+  }else if(model == 'L2' | (is.null(cellline)==FALSE)){
+
+    if(file.exists(paste0(load_dir,'drug_net/features_',cellline,'.csv'))){
+
+      print(paste0('       The drug network for ',cellline,' features has been found in Pre-calculated L2 model       '))
+      drugnet_feature = read.csv(paste0(load_dir,'drug_net/features_',cellline,'.csv'))
+
+    }else{
+
+      drugnet_feature = c.DrugNetFeature(druglist = drugcandidate,
+                                         model = model,
+                                         cellline = cellline,
+                                         CDK_FP = CDK_FP,
+                                         pubchemFP = pubchemFP,
+                                         MACCS_FP = MACCS_FP,
+                                         load_dir = load_dir)
+    }
+  }
+}else{
+
+  drugnet_feature = c.DrugNetFeature(druglist = drugcandidate,
+                                     model = model,
+                                     cellline = cellline,
+                                     CDK_FP = CDK_FP,
+                                     pubchemFP = pubchemFP,
+                                     MACCS_FP = MACCS_FP,
+                                     load_dir = load_dir)
+}
+
+drugnet_feature = drugnet_feature[drugnet_feature$integrated_score2 >=0.2,]
+
+#timeend<-Sys.time()
+#runningtime<-timeend-timestart
+#print(runningtime)
+# cost about 6.968375 mins
+print('----- Drug Net Features Calculation Finished -----')
+print(' ')
+print('----- Drug Net Adjacency Matrix Generating -----')
+drugnet_adj = AdjMatrix_drugs(x = drugnet_feature,
+                              weighted = drugnetWeight,
+                              weight.type = featuretype)
+
+
+if(is.null(drugDEG) & (model == 'L2' | (is.null(cellline)==FALSE))){
+
+  # DEG_DEP_preparation(druglist = drugcandidate,
+  #                     dataset = dataset,
+  #                     cellline = cellline,
+  #                     treatment_time = treatment_time,
+  #                     load_dir = load_dir)
+
+  drugDEG_preparation(cellline = cellline,
+                      dataset = dataset,
+                      treatment_time =  treatment_time,
+                      foldchange = foldchange,
+                      pvalue = pvalue,
+                      load_dir = load_dir)
+
+  drugDEP_preparation(cellline = cellline,
+                      dataset = dataset,
+                      treatment_time =  treatment_time,
+                      foldchange = foldchange,
+                      pvalue = pvalue,
+                      load_dir = load_dir)
+}
+
+print(' ')
+print('----- Gene Net Generating -----')
+print(' ')
+
+if(model == 'L1' | is.null(cellline)){
+
+  gene.net <- c.geneNet(dt= drugtarget,
+                        dg = druggene,
+                        dDEG = drugDEG,
+                        cellline = cellline,
+                        cancer_gene = cancergene,
+                        load_dir = load_dir)
+
+}else if(model == 'L2' | (is.null(cellline)==FALSE)){
+
+  gene.net <- c.geneNet(dt= drugtarget,
+                        dg = druggene,
+                        dDEG = drugDEG,
+                        dataset = dataset,
+                        cellline = cellline,
+                        treatment_time = treatment_time,
+                        cancer_gene = cancergene,
+                        load_dir = load_dir)
+
+}
+
+print('-----  Gene Net Adjacency Matrix Generating -----')
+print(' ')
+geneadj <- c.geneNet.Adj(GeneNetwork = gene.net)
+
+print('----- Drug Gene Adjacency Matrix Generating -----')
+
+
+if(model == 'L1' | is.null(cellline)){
+
+  print('------ Creating Drug Gene Adjacency Matrix for Level 1 Model ------')
+  dgAdj = drugGeneNet.L1(dt = drugtarget,
+                         dg = druggene,
+                         drugAdj = drugnet_adj,
+                         geneNet = gene.net,
+                         dtweight = dtweight,
+                         dgweight = dgweight,
+                         load_dir = load_dir)
+
+}else if(model == 'L2' | (is.null(cellline)==FALSE)){
+
+  print('------ Creating Drug Gene Adjacency Matrix for Level 2 Model ------')
+
+  dgAdj = drugGeneNet.L2(dt = drugtarget,
+                         dg = druggene,
+                         dDEG = drugDEG,
+                         drugAdj = drugnet_adj,
+                         geneNet = gene.net,
+                         dataset = dataset,
+                         cellline = cellline,
+                         treatment_time = treatment_time,
+                         dtweight = dtweight,
+                         dgweight = dgweight,
+                         dDEGweight = dDEGweight,
+                         load_dir = load_dir)
+}
+
+
+# Pathway_pathway net -> Adj Matrix
+
+WWI_all <- read.csv(paste0(load_dir,'pathway/WWI.txt'), sep = '\t', header =T, stringsAsFactors = F)
+
+print('----- Pathway Adjacency Matrix Generating -----')
+
+pathwayadj = pathwayNet.Adj(PathwayNetwork = WWI_all[c(1,2)])
+
+# Drug_Pathway_Matrix
+
+print('----- Drug Pathway Adjacency Matrix Generating -----')
+
+if(model == 'L1' | is.null(cellline)){
+
+  print('------ Creating Drug Pathway Adjacency Matrix for Level 1 Model ------')
+  drugpathwayMatrix <- DrugPathwayMatrix.L1(dt = drugtarget,
+                                            dg = druggene,
+                                            drugAdj = drugnet_adj,
+                                            dgpweight = dgpweight,
+                                            PathwayNetwork = WWI_all,
+                                            load_dir = load_dir)
+
+}else if(model == 'L2' | (is.null(cellline)==FALSE)){
+
+  print('------ Creating Drug Pathway Adjacency Matrix for Level 2 Model ------')
+
+  drugpathwayMatrix <- DrugPathwayMatrix.L2(dt = drugtarget,
+                                            dDEG = drugDEG,
+                                            dataset=dataset,
+                                            cellline = cellline,
+                                            treatment_time=treatment_time,
+                                            drugDEP = drugDEP,
+                                            drugAdj = drugnet_adj,
+                                            dDEpweight = dDEpweight,
+                                            PathwayNetwork = WWI_all,
+                                            load_dir = load_dir)
+}
+
+
+# genepathwayMatrix
+
+gpAdj = genepathwayAdj(drugAdj = drugnet_adj,
+                       pathwayadj = pathwayadj,
+                       geneadj = geneadj,
+                       gpweight = gpweight,
+                       load_dir = load_dir)
+
+
+
+dgTranMatrix <- TransitionMatrix(drugAdj = drugnet_adj,
+                                 geneAdj = geneadj,
+                                 pathwayAdj = pathwayadj,
+                                 druggeneAdj = dgAdj,
+                                 genepathwayAdj = gpAdj,
+                                 drugpathwayAdj = drugpathwayMatrix,
+                                 x=x,
+                                 y=y,
+                                 z=z,
+                                 A=A,
+                                 B=B)
+
+multiplex_m =  reshape2::melt(as.matrix(dgTranMatrix))
+multiplex_df=multiplex_m[multiplex_m$value!=0,]
+genenet = reshape2::melt(as.matrix(geneadj))
+genenet=genenet[genenet$value!=0,]
+genepathwaynet = reshape2::melt(as.matrix(gpAdj))
+genepathwaynet=genepathwaynet[genepathwaynet$value!=0,]
+
+if(model =='L1'){
+
+  save(multiplex_df, genenet, genepathwaynet, file = paste0(resultdir,model,'_result/potential_net/net_data.Rdata'))
+}else if(model == 'L2'){
+
+  save(multiplex_df, genenet, genepathwaynet, file = paste0(resultdir,model,'_result/potential_net/',cellline,'_net_data.Rdata'))
+}
+
+N.gene = nrow(geneadj)
+N.drug = nrow(drugnet_adj)
+
+
+
+print('----- Preparaing Drug Seed -----')
+if(is.null(drugcandidate)){
+
+  if(manual_input %in% c('T','TRUE')  ){
+    print('Please type in the drug you are interested: ')
+    drugcandidate = data.frame(readline())
+  }else{
+    drugcandidate = read.csv(paste0(load_dir,'data/druglist.csv'), header = T, stringsAsFactors = F)
+
+  }
+}
+
+for(drugseeds in drugcandidate[,1]){
+
+  if(drugseeds %in% colnames(drugnet_adj)){
+
+    if(model == 'L1' | is.null(cellline)){
+
+      print('------ Level 1 Model ------')
+
+      seed_score = seedscore(seeds = drugseeds, eta = eta)
+
+      rwr_result = rwr(tm = dgTranMatrix,
+                       r = r,
+                       seeds_score = seed_score)
+
+      drugs_rank = rank_drugs(Num.Gene = N.gene,
+                              Num.Drug = N.drug,
+                              RWR.result = rwr_result,
+                              Drug_seeds = drugseeds)
+
+      drugs_rank$rank = 1:nrow(drugs_rank)
+      genes_rank = rank_genes(Num.Gene = N.gene,
+                              Num.Drug = N.drug,
+                              RWR.result = rwr_result)
+
+      pathways_rank <- rank_pathways(Num.Gene=N.gene,
+                                     Num.Drug=N.drug,
+                                     RWR.result=rwr_result)
+
+    }else if(model == 'L2' | (is.null(cellline)==FALSE)){
+
+      print('------ Level 2 Model ------')
+      if(is.null(essentialgene)){
+
+        seed_score = seedscore(seeds = drugseeds,
+                               eta = eta)
+
+        rwr_result = rwr(tm = dgTranMatrix,
+                         r = r,
+                         seeds_score = seed_score)
+        drugs_rank = rank_drugs(Num.Gene = N.gene,
+                                Num.Drug = N.drug,
+                                RWR.result = rwr_result,
+                                Drug_seeds = drugseeds)
+
+        drugs_rank$rank = 1:nrow(drugs_rank)
+        genes_rank = rank_genes(Num.Drug = N.drug,
+                                Num.Gene = N.gene,
+                                RWR.result = rwr_result)
+
+        pathways_rank <- rank_pathways(Num.Gene=N.gene,
+                                       Num.Drug=N.drug,
+                                       RWR.result=rwr_result)
+
+      }
+    }
+
+    #colnames(rwr_result) = drugseeds
+    write.csv(drugs_rank,paste0(resultdir,model,'_result/drugrank/',drugseeds,'_rank.csv'), row.names = F, quote = F)
+    write.csv(genes_rank,paste0(resultdir,model,'_result/generank/',drugseeds,'_rank.csv'), row.names = F, quote = F)
+    write.csv(pathways_rank,paste0(resultdir,model,'_result/pathwayrank/',drugseeds,'_rank.csv'), row.names = T, quote = F)
+    print(paste0('The prediction result of drug name ',drugseeds,' has been saved!'))
+    #return(drugs_rank)
+
+  }else{
+    print(paste0('The drug name ',drugseeds,' can not be found in the drug network! '))
+  }
+}
+

@@ -1,0 +1,11 @@
+load_dir = "G:/lab/DCcomboNet/Rpackage/input_data/"
+resultdir = "G:/lab/DCcomboNet/Rpackage/tryout_result/"
+drugcandidate = data.frame(drug = "Sorafenib", drugbankID = "DB00398")
+
+DComboNet(load_dir = load_dir, 
+          resultdir = resultdir, 
+          model = "L1", # To choose level one model
+          manual_input = FALSE, # To shield manually input drug name
+          drugcandidate = drugcandidate, 
+          drugnetWeight = TRUE, # Confirm if drug network should be weighted
+          featuretype = 'integrated_score') # Select which drug-drug similarity should be use

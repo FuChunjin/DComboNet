@@ -1,0 +1,89 @@
+load_dir = "G:/lab/DCcomboNet/Rpackage/input_data/"
+resultdir = "G:/lab/DCcomboNet/Rpackage/tryout_result/"
+drugcandidate = NULL # data.frame(drug = "Sorafenib", drug"DB00398")
+manual_input = FALSE
+drugtarget = read.table(paste0(load_dir,'data/drugtarget.csv'), sep =
+',',header = TRUE, stringsAsFactors = FALSE)
+druggene = NULL
+
+#2) runing level two model(L2)
+cellline = 'HEPG2'
+dataset = '92742'
+treatment_time = 6
+foldchange = 0.5
+pvalue = 0.05
+DComboNet(load_dir = load_dir, 
+          resultdir = resultdir, 
+          model = 'L2',
+          drugcandidate=drugcandidate, 
+          drugnetWeight = TRUE, 
+          featuretype = 'integrated_score', 
+          drugtarget = drugtarget, 
+          dataset = dataset, 
+          cellline = cellline, 
+          treatment_time = treatment_time,
+          foldchange = foldchange, 
+          pvalue = pvalue, 
+          dDEpWeight = 1)
+
+network_extract(drugseed = 'Sorafenib', drugcandidate = 'Vorinostat',
+                drugtarget = drugtarget, generank_filter = 0.01, pathwayrank_filter = 0.1,
+                model = "L2", load_dir = load_dir, resultdir = resultdir)
+network_visualization(drugseed = 'Sorafenib', drugcandidate = 'Vorinostat',
+                      drugtarget = drugtarget, model = "L2", load_dir = load_dir,
+                      resultdir = resultdir)
+
+outputdir = 'C:/Users/fengf/Documents/Veronica_files/DCcomboNet/Rpackage/OCL_LY3/'
+drugpair = read.csv(paste0(outputdir,'drugpair_oci_ly3.csv'),stringsAsFactors = F)
+drugcandidate <-  read.csv(paste0(outputdir,"druglist_oci_ly3.csv"), sep = ',', header = T, stringsAsFactors = F)
+CDK_FP  <- read.csv(paste0(outputdir,'drug_net/structure_sim/fingerprint.csv'), sep = ',',header = T, stringsAsFactors = F)
+pubchemFP <- read.csv(paste0(outputdir,'drug_net/structure_sim/PubChem.csv'), sep = ',',header = T, stringsAsFactors = F)
+MACCS_FP <- read.csv(paste0(outputdir,'drug_net/structure_sim/MACCF.csv'), sep = ',',header = T, stringsAsFactors = F)
+
+drugnetWeight = TRUE
+featuretype = 'integrated_score'
+drugtarget = read.csv(paste0(outputdir,'drug_gene/drug_target_oci_ly3.csv'), sep = ',',header = T, stringsAsFactors = F)
+druggene = NULL
+dt_lib = read.csv(paste0(outputdir,'data/drugtarget.csv'))
+
+cellline = 'OCILY3'
+drugDEG = read.table(paste0(outputdir,'drug_gene/DEG/drug_DEG_12hrs.txt'),sep='\t',header=T,stringsAsFactors = F)
+cancergene = read.table(paste0(outputdir,'gene_network/OCILY3_genelist.txt'),sep='\t',header=T,stringsAsFactors = F)
+dtweight = 2
+dgweight = 1
+dDEGweight = 1
+model = 'L2'
+
+drugnetWeight = 'T'
+featuretype = 'integrated_score2'
+
+DComboNet(load_dir = load_dir, 
+          resultdir = resultdir, 
+          model = 'L2',
+          drugcandidate=drugcandidate, 
+          
+          CDK_FP = CDK_FP,
+          pubchemFP = pubchemFP,
+          MACCS_FP = MACCS_FP,
+          drugnetWeight = TRUE, 
+          featuretype = featuretype, 
+          drugtarget = drugtarget, 
+          dataset = NULL, 
+          cellline = 'OCILY3', 
+          treatment_time = NULL,
+          foldchange = NULL, 
+          pvalue = NULL, 
+          drugDEG = drugDEG,
+          cancergene = cancergene,
+          dtweight = 2,
+          dgweight = 1,
+          dDEGweight = 1,
+          dgpWeight = 1,
+          dDEpWeight = 1)
+
+network_extract(drugseed = 'Sorafenib', drugcandidate = 'Vorinostat',
+                drugtarget = drugtarget, generank_filter = 0.01, pathwayrank_filter = 0.1,
+                model = "L2", load_dir = load_dir, resultdir = resultdir)
+network_visualization(drugseed = 'Sorafenib', drugcandidate = 'Vorinostat',
+                      drugtarget = drugtarget, model = "L2", load_dir = load_dir,
+                      resultdir = resultdir)

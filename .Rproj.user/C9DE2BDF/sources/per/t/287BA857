@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1586612857227.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1956378542",
+    "id" : "287BA857",
+    "lastKnownWriteTime" : 1586834519,
+    "last_content_update" : 1586834519449,
+    "path" : "G:/lab/DCcomboNet/Rpackage/input_data/DComboNet/R/DEG_DEpathway_preparation.R",
+    "project_path" : "R/DEG_DEpathway_preparation.R",
+    "properties" : {
+        "cursorPosition" : "268,16",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

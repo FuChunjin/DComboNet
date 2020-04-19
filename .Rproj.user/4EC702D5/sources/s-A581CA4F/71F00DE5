@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1586916990948.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "71F00DE5",
+    "lastKnownWriteTime" : 1586333366,
+    "last_content_update" : 1586333366,
+    "path" : "G:/lab/DCcomboNet/Rpackage/input_data/DComboNet/R/DrugGeneHeteroNet.R",
+    "project_path" : "R/DrugGeneHeteroNet.R",
+    "properties" : {
+        "cursorPosition" : "244,0",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

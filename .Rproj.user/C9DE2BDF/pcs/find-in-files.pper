@@ -1,0 +1,10 @@
+{
+    "dialog-state" : {
+        "caseSensitive" : false,
+        "filePatterns" : [
+        ],
+        "path" : "~/Veronica_files/DCcomboNet/Rpackage/DComboNet",
+        "query" : "error",
+        "regex" : false
+    }
+}

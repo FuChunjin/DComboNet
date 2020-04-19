@@ -1,0 +1,18 @@
+"0","DComboNet(load_dir = load_dir, 
+          resultdir = resultdir, 
+          model = ""L1"", # To choose level one model
+          manual_input = FALSE, # To shield manually input drug name
+          drugcandidate = drugcandidate, 
+          drugnetWeight = TRUE, # Confirm if drug network should be weighted
+          featuretype = 'integrated_score') # Select which drug-drug similarity should be use
+"
+"2","'G:\lab\DCcomboNet\Rpackage\tryout_result' already exists"
+"2","'G:\lab\DCcomboNet\Rpackage\tryout_result\L1_result' already exists"
+"2","'G:\lab\DCcomboNet\Rpackage\tryout_result\L1_result\drugrank' already exists"
+"2","'G:\lab\DCcomboNet\Rpackage\tryout_result\L1_result\generank' already exists"
+"2","'G:\lab\DCcomboNet\Rpackage\tryout_result\L1_result\pathwayrank' already exists"
+"2","'G:\lab\DCcomboNet\Rpackage\tryout_result\L1_result\potential_net' already exists"
+"2","cannot open file 'G:/lab/DCcomboNet/Rpackage/data//DComboNet/R/DEG_DEpathway_preparation.R': No such file or directory"
+"2","Error in file(filename, ""r"", encoding = encoding) : 
+  cannot open the connection
+"

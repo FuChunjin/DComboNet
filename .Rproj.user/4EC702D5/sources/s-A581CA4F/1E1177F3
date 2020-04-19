@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1586961042378.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "1E1177F3",
+    "lastKnownWriteTime" : 1587021723,
+    "last_content_update" : 1587021723,
+    "path" : "G:/lab/DCcomboNet/Rpackage/input_data/DComboNet/R/DrugGeneNet.R",
+    "project_path" : "R/DrugGeneNet.R",
+    "properties" : {
+        "cursorPosition" : "71,5",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 9,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

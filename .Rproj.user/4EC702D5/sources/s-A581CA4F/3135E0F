@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1586854951219.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "3135E0F",
+    "lastKnownWriteTime" : 1587183628,
+    "last_content_update" : 1587183628,
+    "path" : "G:/lab/DCcomboNet/Rpackage/input_data/DComboNet/R/network_extraction_visualization.R",
+    "project_path" : "R/network_extraction_visualization.R",
+    "properties" : {
+        "cursorPosition" : "5,22",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

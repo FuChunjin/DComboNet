@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1586609782148.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2829162480",
+    "id" : "57096438",
+    "lastKnownWriteTime" : 1587290869,
+    "last_content_update" : 1587290869783,
+    "path" : "G:/lab/DCcomboNet/Rpackage/input_data/DComboNet/vignettes/DComboNet-vignette.Rmd",
+    "project_path" : "vignettes/DComboNet-vignette.Rmd",
+    "properties" : {
+        "cursorPosition" : "779,0",
+        "scrollLine" : "790"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
