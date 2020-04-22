@@ -103,10 +103,10 @@
 #'
 #' load_dir = "G:/lab/DCcomboNet/Rpackage/input_data/"
 #' resultdir = "G:/lab/DCcomboNet/Rpackage/tryout_result/"
-#' drugcandidate = data.frame(drug = "Sorafenib", drug"DB00398")
+#' drugcandidate = data.frame(drug = "Sorafenib", drug = "DB00398")
 #' manual_input = FALSE
 
-#' #1) runing level one model (L1)
+#' # 1) runing level one model (L1)
 #' \dontrun{
 #'
 #' DComboNet(load_dir = load_dir,
@@ -117,11 +117,12 @@
 #'           featuretype = 'integrated_score')
 #' }
 #'
-#' Runing level one model with extra data
+#' # Runing level one model with extra data
 #' dt_table = read.table(paste0(load_dir,'data/drugtarget.csv'), sep =
 #' ',',header = TRUE, stringsAsFactors = FALSE)
 #' dg_table = data.frame(drug = 'Sorafenib', target  = 'RAF1')
 #'
+#' \dontrun{
 #' DComboNet(load_dir = load_dir,
 #'           resultdir = resultdir,
 #'           model = "L1",
@@ -133,7 +134,7 @@
 #'           druggene = dg_table)
 #'
 #'
-#' #2) runing level two model(L2)
+#' # 2) runing level two model (L2)
 #' # Calling provided data from LINCS database
 #'\dontrun{
 #' DComboNet(load_dir = load_dir,
@@ -152,8 +153,9 @@
 #'           pvalue_DEP = 0.05)
 #' }
 #'
-# Providing drug-DEG table, drug-DEP table and cancer sample/cell line specfic
-# expressed gene list.
+#'
+#'# Providing drug-DEG table, drug-DEP table and cancer sample/cell line specfic
+#'# expressed gene list.
 
 #'\dontrun{
 #'

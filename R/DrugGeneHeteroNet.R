@@ -192,7 +192,7 @@ TransitionMatrix <- function(drugAdj,
 
     for (j in 1:L){
       if(Row_Sum_Bipartite[j] != 0){
-        Transition_Pathway_Network[,j] <- ((1-z)*pathwayAdj[,j] /Col_Sum_Multiplex[j])
+        Transition_Pathway_Network[,j] <- ((1-y)*pathwayAdj[,j] /Col_Sum_Multiplex[j])
       } else {
         Transition_Pathway_Network[,j] <- pathwayAdj[,j] /Col_Sum_Multiplex[j]
       }
@@ -204,7 +204,7 @@ TransitionMatrix <- function(drugAdj,
     colnames(Transition_Gene_Network) <- colnames(geneAdj)
 
     Col_Sum_Multiplex <- Matrix::colSums(geneAdj,na.rm=FALSE,dims=1, sparseResult=FALSE)
-    Row_Sum_Bipartite1 <- Matrix::rowSums(druggeneAdj, na.rm = FALSE, dims = 1)#, sparseResult = FALSE)
+    Row_Sum_Bipartite1 <- Matrix::rowSums(druggeneAdj, na.rm = FALSE, dims = 1) #, sparseResult = FALSE)
     Row_Sum_Bipartite2 <- Matrix::colSums(genepathwayAdj)
 
     for (j in 1:N){

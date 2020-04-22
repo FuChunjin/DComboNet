@@ -45,6 +45,10 @@ example, MCF7 cell line (\code{cellline = 'MCF7'}) provided two time points
 in LINCS GSE70138 dataset - 6 hour and 12 hour - \code{6} or \code{12}
 should be taken as input here, as numeric or character}
 
+\item{drugDEP}{if \code{cellline} is not included in provided cancer cell
+line list, in \code{as.data.frame} format must be provided, otherwise
+\emph{ERROR} information will be returned}
+
 \item{drugAdj}{drug adjacency matrix (sparse matrix) generated from drug-drug
 association network via \code{AdjMatrix_drugs}}
 

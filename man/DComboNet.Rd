@@ -2,7 +2,7 @@
 % Please edit documentation in R/Prediction.R
 \name{DComboNet}
 \alias{DComboNet}
-\title{DComboNet}
+\title{Prediction drug combinations}
 \usage{
 DComboNet(
   load_dir,
@@ -99,8 +99,8 @@ example, MCF7 cell line (\code{cellline = 'MCF7'}) provided two time points
 in LINCS GSE\code{70138} dataset - 6 hour and 12 hour - \code{6} or
 \code{12} should be taken as input here, as numeric or character}
 
-\item{foldchange_DEG}{numeric, fold change of gene expression between drug-treated
-cancer cell line and DMSO treated cell line}
+\item{foldchange_DEG}{numeric, fold change of gene expression between
+drug-treated cancer cell line and DMSO treated cell line}
 
 \item{pvalue_DEG}{numeric, p-values corresponding to the t-statistics}
 
@@ -171,46 +171,6 @@ Ranked result tables. Each drug seed will create three files that
 \description{
 the function \code{DComboNet} is to predict possible drug to
   pair with the drug candidate without expression data
-}
-\examples{
-
-load_dir = "G:/lab/DCcomboNet/Rpackage/input_data/"
-resultdir = "G:/lab/DCcomboNet/Rpackage/tryout_result/"
-drugcandidate = data.frame(drug = "Sorafenib", drug"DB00398")
-# or drugcandidate = NULL
-manual_input = FALSE
-drugtarget = NULL
-# or drugtarget = read.table(paste0(load_dir,'data/drugtarget.csv'), sep =
-',',header = TRUE, stringsAsFactors = FALSE)
-druggene = NULL
-# or druggene = data.frame(drug = 'Sorafenib', target  = 'RAF1')
-#
-#1) runing level one model (L1)
-\dontrun{
-DComboNet(load_dir = load_dir, resultdir = resultdir, model = 'L1',
-manual_input = FALSE, drugcandidate=drugcandidate, drugnetWeight = TRUE,
-featuretype = 'integrated_score', drugtarget = drugtarget, druggene =
-druggene)
-}
-
-#2) runing level two model(L2)
-\dontrun{
-DComboNet(load_dir = load_dir,
-resultdir = resultdir,
-model = "L2", # Choose level two model
-manual_input = FALSE, # You can use manual input function (see level one model example)
-drugcandidate = drugcandidate,
-drugnetWeight = TRUE,
-featuretype = 'integrated_score',
-dataset = "92742",
-cellline = "HEPG2",
-treatment_time = 6,
- foldchange_DEG = 0.5,
- pvalue_DEG = 0.05,
- foldchange_DEP = 0.5,
- pvalue_DEP = 0.05)
-}
-
 }
 \seealso{
 \code{\link{L1.LOCOCV}}, \code{\link{L2.LOCOCV}}

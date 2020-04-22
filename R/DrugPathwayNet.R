@@ -157,6 +157,9 @@ DrugPathwayMatrix.L1 <- function(dt = NULL,
 #' @param dDEG if \code{cellline} is not included in provided cancer cell line
 #'   list, in \code{as.data.frame} format must be provided, otherwise
 #'   \emph{ERROR} information will be returned
+#' @param drugDEP if \code{cellline} is not included in provided cancer cell
+#'   line list, in \code{as.data.frame} format must be provided, otherwise
+#'   \emph{ERROR} information will be returned
 #' @param drugAdj drug adjacency matrix (sparse matrix) generated from drug-drug
 #'   association network via \code{AdjMatrix_drugs}
 #' @param PathwayNetwork \code{data.frame} of pathway pathway association
