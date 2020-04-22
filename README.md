@@ -21,7 +21,7 @@ This tutorial provides the instruction of the main usage of this package fitting
 
 ## Tutorial  
 
-The detail usages of ` DComboNet`, can be found check: [instruction](https://veronicafung.github.io/test/DComboNet-vignette.html) 
+The detail usages of ` DComboNet`, can be found here: [Instruction](https://veronicafung.github.io/DComboNet/vignettes/DComboNet-vignette.html) 
 
 
 ## Citation
