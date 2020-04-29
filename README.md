@@ -16,7 +16,9 @@ This tutorial provides the instruction of the main usage of this package fitting
 
   library(DComboNet)
 ```
-  
+
+Due to the large size of drug-induced gene expression profiles for Level 2 model, we prepared an extra data folder. After install the package, you should download this compressed data set, unzip it and put in a reachable path. This path should be used as ` load_dir` for functions in DComboNet.
+
 ## Environment
 
 ## Tutorial  
