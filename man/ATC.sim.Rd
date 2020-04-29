@@ -15,8 +15,8 @@ ATC.sim(druglist = NULL, load_dir)
 \code{ATC.sim} returns \code{ATCsim.matrix}, drug-drug ATC code based
   similarity matrix. Row name and column name are drug names, values
   represent drug-drug ATC code based similarity. Matrix will be saved in
-  provided path \code{load_dir} under \emph{'/drug_net/atc_sim/'} folder, under the
-  name of 'ATCsim.txt'
+  provided path \code{load_dir} under \emph{"/drug_net/atc_sim/"} folder, under the
+  name of "ATCsim.txt"
 }
 \description{
 The function \code{ATC.sim} is used to calculate drug-drug ATC code-based
@@ -43,8 +43,8 @@ ATC code based similarity between two drugs will be calculated and
 }
 \examples{
 
-druglist = data.frame(drug = 'Sorafenib')
-load_dir = 'G:/lab/DCcomboNet/Rpackage/input_data/'
+druglist = data.frame(drug = "Sorafenib")
+load_dir = "G:/lab/DCcomboNet/Rpackage/input_data/"
 ATC.sim(druglist = druglist, load_dir = load_dir)
 
 }

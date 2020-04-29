@@ -7,7 +7,7 @@
 SE.sim(druglist = NULL, load_dir)
 }
 \arguments{
-\item{druglist}{a dataframe of drug and corresponding 'drugbank ID'}
+\item{druglist}{a dataframe of drug and corresponding "drugbank ID"}
 
 \item{load_dir}{path to load and save modeling data files}
 }

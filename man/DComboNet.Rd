@@ -49,7 +49,7 @@ DComboNet(
 
 \item{model}{choose model type, two models here to choose: "L1", "L2"}
 
-\item{drugcandidate}{drug and its corresponding 'drugbank ID' in
+\item{drugcandidate}{drug and its corresponding "drugbank ID" in
 \code{data.frame}}
 
 \item{manual_input}{logical (\code{TRUE(T)/FALSE(F)}), if user wants to
@@ -63,11 +63,11 @@ manually input drug(s)}
 
 \item{drugnetWeight}{logical (\code{TRUE(T)/FALSE(F)}), choose if the edge of
 drug network should be weighted by feature values. The abbreviationS
-'\code{T/F}' are also acceptable}
+"\code{T/F}" are also acceptable}
 
-\item{featuretype}{if parameter '\code{weighted = TRUE/T}', choose the
+\item{featuretype}{if parameter "\code{weighted = TRUE/T}", choose the
 feature type to weight the edge of drug-drug network. The options are:
-'ATCsim','STsim','SEsim','integrated_score','integrated_score2'}
+"ATCsim","STsim","SEsim","integrated_score","integrated_score2"}
 
 \item{drugtarget}{drug-target gene interaction file in \code{data.frame}
 format (otherwise \code{as.data.frame} can be used to transform the format
@@ -81,10 +81,10 @@ publications or from IPA tool. Gene name should be converted to official
 gene names (i.e. HGNC gene symbols)}
 
 \item{dataset}{GEO ID of LINCS datasets, two datasets are provided here:
-'70138' and '92742'}
+"70138" and "92742"}
 
 \item{cellline}{cancer cell lines name. If level two model is called
-(\code{model = 'L2'} in \code{\link{DComboNet}} or
+(\code{model = "L2"} in \code{\link{DComboNet}} or
 \code{\link{L2.LOCOCV}}). If requested cell line is included in the default
 cancer cell line list, \code{dDEG} do not need to provided unless
 particular drug induced differentially expressed gene list you want to
@@ -95,7 +95,7 @@ construct specific gene network, otherwise \emph{ERROR} information will be
 returned}
 
 \item{treatment_time}{drug treatment time provided in LINCS database. For
-example, MCF7 cell line (\code{cellline = 'MCF7'}) provided two time points
+example, MCF7 cell line (\code{cellline = "MCF7"}) provided two time points
 in LINCS GSE\code{70138} dataset - 6 hour and 12 hour - \code{6} or
 \code{12} should be taken as input here, as numeric or character}
 
@@ -118,7 +118,7 @@ line list, in \code{as.data.frame} format must be provided, otherwise
 \emph{ERROR} information will be returned}
 
 \item{cancergene}{cancer_gene a list of cancer related genes. If Level one
-model is called (\code{model = 'L1'} in \code{\link{DComboNet}} or
+model is called (\code{model = "L1"} in \code{\link{DComboNet}} or
 \code{\link{L1.LOCOCV}}), \code{cancer_gene} list is provided within the
 function, it can be \code{NULL}. In level two model, if cell line name is
 included in our provided cancer specific gene lists, \code{NULL} can take

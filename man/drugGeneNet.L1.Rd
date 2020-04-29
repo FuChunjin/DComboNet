@@ -49,15 +49,15 @@ The function \code{drugGeneAdj} is to generate the adjacency
 \examples{
 #
 # loading files
-load_dir = 'G:/lab/DCcomboNet/Rpackage/input_data/'
-drugnet_feature = read.table(paste0(load_dir,'drug_net/features.csv'),
-sep=',',header=TRUE, stringsAsFactors = FALSE)
+load_dir = "G:/lab/DCcomboNet/Rpackage/input_data/"
+drugnet_feature = read.table(paste0(load_dir,"drug_net/features.csv"),
+sep=",",header=TRUE, stringsAsFactors = FALSE)
 drugnet_feature = drugnet_feature[drugnet_feature$integrated_score2 >=0.2,]
-drugtarget = read.table(paste0(load_dir,'data/drugtarget.csv'), sep =
-',',header = TRUE, stringsAsFactors = FALSE)
-druggene = data.frame(drug = 'Sorafenib', target  = 'RAF1')
+drugtarget = read.table(paste0(load_dir,"data/drugtarget.csv"), sep =
+",",header = TRUE, stringsAsFactors = FALSE)
+druggene = data.frame(drug = "Sorafenib", target  = "RAF1")
 drugnet_adj = AdjMatrix_drugs(x = drugnet_feature, weighted = TRUE,
-weight.type = 'integrated_score')
+weight.type = "integrated_score")
 gene.net = geneNet(dt = drugtarget, dg = druggene, load_dir = load_dir)
 dtweight = 2
 dgweight = 1

@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1588077515292.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3381702794",
+    "id" : "238EED5B",
+    "lastKnownWriteTime" : 1588148759,
+    "last_content_update" : 1588148759186,
+    "path" : "G:/lab/DCcomboNet/Rpackage/input_data/DComboNet/R/GeneNet.R",
+    "project_path" : "R/GeneNet.R",
+    "properties" : {
+        "cursorPosition" : "124,44",
+        "scrollLine" : "104"
+    },
+    "relative_order" : 10,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

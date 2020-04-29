@@ -17,8 +17,8 @@ gene list will be computed and saved in given path; otherwise
 \value{
 \code{cell_genelist} cancer cell line specific expressed gene list,
   which will be returned and saved in provided \code{load_dir} under the
-  folder named '\emph{gene_network}' in \emph{.txt} format, file will be
-  named as " '\code{cellline}'_genelist.txt" name you provide
+  folder named "\emph{gene_network}" in \emph{.txt} format, file will be
+  named as " "\code{cellline}"_genelist.txt" name you provide
 }
 \description{
 The function \code{cancerGene} is to generate cancer sample

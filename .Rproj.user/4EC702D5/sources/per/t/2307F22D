@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1588140891010.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1488738713",
+    "id" : "2307F22D",
+    "lastKnownWriteTime" : 1588132963,
+    "last_content_update" : 1588132963,
+    "path" : "G:/lab/DCcomboNet/Rpackage/input_data/DComboNet/R/DrugNetFeatures.R",
+    "project_path" : "R/DrugNetFeatures.R",
+    "properties" : {
+        "cursorPosition" : "380,59",
+        "scrollLine" : "376"
+    },
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

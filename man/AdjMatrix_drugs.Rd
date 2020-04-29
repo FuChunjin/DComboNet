@@ -15,12 +15,12 @@ AdjMatrix_drugs(
 \code{DrugNetFeature}}
 
 \item{weighted}{\code{TRUE/FALSE}, choose if the edge of drug network should
-be weighted by feature values. The abbreviationS '\code{T/F}' are also
+be weighted by feature values. The abbreviationS "\code{T/F}" are also
 acceptable}
 
-\item{weight.type}{if parameter '\code{weighted = TRUE/T}', choose the
+\item{weight.type}{if parameter "\code{weighted = TRUE/T}", choose the
 feature type to weight the edge of drug-drug network. The options are:
-'ATCsim','STsim','SEsim','integrated_score','integrated_score2'}
+"ATCsim","STsim","SEsim","integrated_score","integrated_score2"}
 }
 \value{
 \code{AdjMatrix_drugs} Drug adjacency matrix generated from drug-drug
@@ -36,6 +36,6 @@ The function \code{AdjMatrix_drugs} is to generate adjacency
 # drugfeature = read.table(paste0(load_dir, "drug_net/features.csv", sep =
 # ",", header = TRUE, stringsAsFactors = FALSE))
 \dontrun{
-AdjMatrix_drugs(x = drugfeature, weighted = TRUE, weight.type = 'integrated_score')
+AdjMatrix_drugs(x = drugfeature, weighted = TRUE, weight.type = "integrated_score")
 }
 }

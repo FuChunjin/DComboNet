@@ -22,10 +22,10 @@ The function \code{ATC.Dis} is to calculate drug ATC code distance in
 }
 \examples{
 
-druglist = data.frame(drug = 'Sorafenib')
-load_dir = 'G:/lab/DCcomboNet/Rpackage/input_data/'
+druglist = data.frame(drug = "Sorafenib")
+load_dir = "G:/lab/DCcomboNet/Rpackage/input_data/"
 drug_atc = drugATCprep(druglist = druglist, load_dir = load_dir)
-ATC.Dis(drug_atc = drug_atc, load_dir = load_dir)
+ATC_dis = ATC.Dis(drug_atc = drug_atc, load_dir = load_dir)
 
 }
 \seealso{

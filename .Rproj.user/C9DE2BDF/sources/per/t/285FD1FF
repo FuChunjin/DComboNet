@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1587365922842.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1460651329",
+    "id" : "285FD1FF",
+    "lastKnownWriteTime" : 1588148727,
+    "last_content_update" : 1588148727121,
+    "path" : "G:/lab/DCcomboNet/Rpackage/input_data/DComboNet/R/DrugPathwayNet.R",
+    "project_path" : "R/DrugPathwayNet.R",
+    "properties" : {
+        "cursorPosition" : "241,28",
+        "scrollLine" : "232"
+    },
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

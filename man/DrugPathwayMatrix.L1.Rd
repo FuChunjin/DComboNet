@@ -42,22 +42,21 @@ related genes}
   matrix)
 }
 \description{
-The function 'DrugPathwayMatrix.L1' is to generate the adjacency
+The function "DrugPathwayMatrix.L1" is to generate the adjacency
   matrix from drug-pathway interaction network for level one model
 }
 \examples{
 #
 # loading files
-load_dir = 'G:/lab/DCcomboNet/Rpackage/input_data/'
-drugnet_feature = read.table(paste0(load_dir,'drug_net/features.csv'),
-sep=',',header=TRUE, stringsAsFactors = FALSE)
-drugnet_feature = drugnet_feature[drugnet_feature$integrated_score2 >=0.2,]
-drugtarget = read.table(paste0(load_dir,'data/drugtarget.csv'), sep =
-',',header = TRUE, stringsAsFactors = FALSE)
-druggene = data.frame(drug = 'Sorafenib', target  = 'RAF1')
+load_dir = "G:/lab/DCcomboNet/Rpackage/input_data/"
+drugnet_feature = read.table(paste0(load_dir,"drug_net/features.csv"),
+sep=",",header=TRUE, stringsAsFactors = FALSE)
+drugtarget = read.table(paste0(load_dir,"data/drugtarget.csv"), sep =
+",",header = TRUE, stringsAsFactors = FALSE)
+druggene = data.frame(drug = "Sorafenib", target  = "RAF1")
 # or druggene = NULL
 drugnet_adj = AdjMatrix_drugs(x = drugnet_feature, weighted = TRUE,
-weight.type = 'integrated_score')
+weight.type = "integrated_score")
 PathwayNetwork = read.table(paste0(load_dir,"pathway/WWI.txt"), sep = "\t",
 header =TRUE, stringsAsFactors = FALSE)
 dgpweight = 1
@@ -65,4 +64,6 @@ dgpweight = 1
 # construct drug-pathway adjacency matrix for level one model#'
 DrugPathwayMatrix.L1(dt = drugtarget, dg = druggene, drugAdj = drugnet_adj,
 dgpweight = dgpweight, PathwayNetwork = PathwayNetwork, load_dir = load_dir)
+
+
 }

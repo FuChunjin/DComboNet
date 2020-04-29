@@ -78,7 +78,7 @@ TransitionMatrix <- function(drugAdj,
                              z = 0,
                              A = 0.5,
                              B = 0.5){
-  if (requireNamespace('Matrix')){
+  if (requireNamespace("Matrix")){
 
     #drugAdj = drugnet_adj
     #geneAdj = geneadj
@@ -104,7 +104,7 @@ TransitionMatrix <- function(drugAdj,
       }
     }
 
-    #write.csv(as.matrix(Transition_Gene_Drugs,'Output_Files/test.file/Transition_Gene_Drugs.csv')
+    #write.csv(as.matrix(Transition_Gene_Drugs,"Output_Files/test.file/Transition_Gene_Drugs.csv")
 
     Transition_Drugs_Gene <- Matrix::Matrix(0,nrow=M,ncol=N,sparse = TRUE)
     colnames(Transition_Drugs_Gene) <- rownames(druggeneAdj)
@@ -117,7 +117,7 @@ TransitionMatrix <- function(drugAdj,
         Transition_Drugs_Gene[,i] <- 0
       }
     }
-    #write.csv(as.matrix(Transition_Drugs_Gene),'Output_Files/test.file/Transition_Drugs_Gene.csv')
+    #write.csv(as.matrix(Transition_Drugs_Gene),"Output_Files/test.file/Transition_Drugs_Gene.csv")
 
     #drugAdj = drugnet_adj
     #geneAdj = pathwayadj
@@ -135,7 +135,7 @@ TransitionMatrix <- function(drugAdj,
       }
     }
 
-    #write.csv(as.matrix(Transition_Gene_Drugs,'Output_Files/test.file/Transition_Gene_Drugs.csv')
+    #write.csv(as.matrix(Transition_Gene_Drugs,"Output_Files/test.file/Transition_Gene_Drugs.csv")
 
     Transition_Drugs_Pathway <- Matrix::Matrix(0,nrow=M,ncol=L,sparse = TRUE)
     colnames(Transition_Drugs_Pathway) <- row.names(drugpathwayAdj)
@@ -166,7 +166,7 @@ TransitionMatrix <- function(drugAdj,
       }
     }
 
-    #write.csv(as.matrix(Transition_Gene_Drugs,'Output_Files/test.file/Transition_Gene_Drugs.csv')
+    #write.csv(as.matrix(Transition_Gene_Drugs,"Output_Files/test.file/Transition_Gene_Drugs.csv")
 
     Transition_Genes_Pathway <- Matrix::Matrix(0,nrow=N,ncol=L,sparse = TRUE)
     colnames(Transition_Genes_Pathway) <- row.names(genepathwayAdj)

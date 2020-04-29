@@ -23,7 +23,7 @@ The function \code{drugATCprep} is used for preparing input
 }
 \examples{
 
-druglist = data.frame(drug = 'Sorafenib')
-load_dir = 'G:/lab/DCcomboNet/Rpackage/input_data/'
+druglist = data.frame(drug = "Sorafenib")
+load_dir = "G:/lab/DCcomboNet/Rpackage/input_data/"
 drugATCprep(druglist = druglist, load_dir = load_dir)
 }

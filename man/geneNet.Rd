@@ -32,10 +32,10 @@ list, in \code{as.data.frame} format must be provided, otherwise
 \emph{ERROR} information will be returned}
 
 \item{dataset}{GEO ID of LINCS datasets, two datasets are provided here:
-'70138' and '92742'}
+"70138" and "92742"}
 
 \item{cellline}{cancer cell lines name. If level two model is called
-(\code{model = 'L2'} in \code{\link{DComboNet}} or
+(\code{model = "L2"} in \code{\link{DComboNet}} or
 \code{\link{L2.LOCOCV}}). If requested cell line is included in the default
 cancer cell line list, \code{dDEG} do not need to provided unless
 particular drug induced differentially expressed gene list you want to
@@ -46,12 +46,12 @@ construct specific gene network, otherwise \emph{ERROR} information will be
 returned}
 
 \item{treatment_time}{drug treatment time provided in LINCS database. For
-example, MCF7 cell line (\code{cellline = 'MCF7'}) provided two time points
+example, MCF7 cell line (\code{cellline = "MCF7"}) provided two time points
 in LINCS GSE\code{70138} dataset - 6 hour and 12 hour - \code{6} or
 \code{12} should be taken as input here, as numeric or character}
 
 \item{cancer_gene}{a list of cancer related genes. If Level one model is
-called (\code{model = 'L1'} in \code{\link{DComboNet}} or
+called (\code{model = "L1"} in \code{\link{DComboNet}} or
 \code{\link{L1.LOCOCV}}), \code{cancer_gene} list is provided within the
 function, it can be \code{NULL}. In level two model, if cell line name is
 included in our provided cancer specific gene lists, \code{NULL} can take
@@ -69,21 +69,21 @@ as input, otherwise \code{cancer_gene} should be prepared in
 }
 \examples{
 # 1) gene network built according to level one model
-drugtarget = data.frame(drug = 'Sorafenib', target = 'BRAF')
-druggene = data.frame(drug = 'Sorafenib', target = 'RAF1')
-load_dir = 'G:/lab/DCcomboNet/Rpackage/input_data/'
+drugtarget = data.frame(drug = "Sorafenib", target = "BRAF")
+druggene = data.frame(drug = "Sorafenib", target = "RAF1")
+load_dir = "G:/lab/DCcomboNet/Rpackage/input_data/"
 geneNet(dt = drugtarget, dg = druggene, load_dir = load_dir)
 
 # 2) gene network built according to level two model
-drugtarget = data.frame(drug = 'Sorafenib', target = 'BRAF')
-druggene = data.frame(drug = 'Sorafenib', target = 'RAF1')
+drugtarget = data.frame(drug = "Sorafenib", target = "BRAF")
+druggene = data.frame(drug = "Sorafenib", target = "RAF1")
 drugDEG = NULL
-# or drugDEG = data.frame(drug = 'Sorafenib', target = c('FOSL1', 'TUBB6', 'RRP8'))
-dataset = '92742'
-cellline = 'HEPG2'
-t='6'
+# or drugDEG = data.frame(drug = "Sorafenib", target = c("FOSL1", "TUBB6", "RRP8"))
+dataset = "92742"
+cellline = "HEPG2"
+t="6"
 cancergene = NULL
-# or cancergene = c('AKT3','CDH2')
+# or cancergene = c("AKT3","CDH2")
 load_dir = "G:/lab/DCcomboNet/Rpackage/input_data/"
 geneNet(dt = drugtarget, dg = druggene, dDEG = drugDEG, dataset= dataset,
 cellline = cellline, treatment_time = t, cancer_gene = cancergene, load_dir =

@@ -32,10 +32,10 @@ Three kinds of chemical fingerprint based similarity will be computed
  average score of these three fingerprint based similarity is computed as
  final drug-drug chemical fingerprint-based similarity. Four similarity
  matrices will be calculated and saved to path provided by user
- (\code{load_dir}) under \emph{'/data/fingerprints/'} folder.
+ (\code{load_dir}) under \emph{"/data/fingerprints/"} folder.
 }
 \examples{
-load_dir = 'G:/lab/DCcomboNet/Rpackage/input_data/'
+load_dir = "G:/lab/DCcomboNet/Rpackage/input_data/"
 structure.sim(load_dir = load_dir)
 
 

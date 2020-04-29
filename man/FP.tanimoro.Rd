@@ -21,9 +21,9 @@ The function \code{FP.tanimoro} is used for computing Tanimoto
   generated fingerprint file.
 }
 \examples{
-load_dir = 'G:/lab/DCcomboNet/Rpackage/input_data/'
+load_dir = "G:/lab/DCcomboNet/Rpackage/input_data/"
 fingerprint = read.table(paste0(load_dir,
-'/data/fingerprints/fingerprints.csv'), sep = ",", header = TRUE,
+"/data/fingerprints/fingerprints.csv"), sep = ",", header = TRUE,
 stringsAsFactors = FALSE)
 FP.tanimoro(fingerprint = fingerprint)
 

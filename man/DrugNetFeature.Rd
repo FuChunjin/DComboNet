@@ -15,14 +15,14 @@ DrugNetFeature(
 )
 }
 \arguments{
-\item{druglist}{drug and its corresponding 'drugbank ID' in \code{data
+\item{druglist}{drug and its corresponding "drugbank ID" in \code{data
 frame}}
 
 \item{cellline}{cancer cell lines name, provide only when level two model is
-called (\code{model = 'L2'}).}
+called (\code{model = "L2"}).}
 
 \item{model}{define which level model should be provided. Options are level
-one model ('\code{L1}') and level two model ('\code{L2}')}
+one model ("\code{L1}") and level two model ("\code{L2}")}
 
 \item{CDK_FP}{Drug fingerprint matrix generated from PEDAL}
 
@@ -44,7 +44,7 @@ The function \code{DrugNetFeature} is to calculate drug ATC
 }
 \details{
 \code{DrugNetFeature} integrates calculation of three drug-drug
-  similarity functions, \code{druglist} included 'drugbank ID' is
+  similarity functions, \code{druglist} included "drugbank ID" is
   required to provide for file preparation. drug ATC code-based similarity,
   chemical structure fingerprint-based similarity and drug side effect-based
   similarity will be computed seperately.
@@ -54,7 +54,7 @@ The function \code{DrugNetFeature} is to calculate drug ATC
   phamacological score and the score of known combinations will be replaced
   as \code{1}. Final \code{feature} table will be saved in provided
   \code{load_dir} path under \emph{/drug_net/} folder named with
-  'features.csv' for level one model or 'features_\emph{cellline}.csv' if
+  "features.csv" for level one model or "features_\emph{cellline}.csv" if
   level two model is called and \code{cellline} is provided.
 }
 \examples{

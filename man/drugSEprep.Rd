@@ -7,7 +7,7 @@
 drugSEprep(druglist = NULL, load_dir)
 }
 \arguments{
-\item{druglist}{drug and its corresponding 'drugbank ID' in \code{data
+\item{druglist}{drug and its corresponding "drugbank ID" in \code{data
 frame}}
 
 \item{load_dir}{path to load or save modeling data files}
@@ -24,7 +24,7 @@ The function \code{drugSEprep} is used to prepare input file for
 \details{
 \code{drugSEprep} provides drug-side effect file download from
   \code{SIDER4} database, where newly inputed drugs can be matched to their
-  known side effect terms through 'drugbank ID'.
+  known side effect terms through "drugbank ID".
 }
 \examples{
 load_dir = "G:/lab/DCcomboNet/Rpackage/input_data/"

@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1588136410044.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "21858515",
+    "id" : "27D87334",
+    "lastKnownWriteTime" : 1588148733,
+    "last_content_update" : 1588148733316,
+    "path" : "G:/lab/DCcomboNet/Rpackage/input_data/DComboNet/R/GenePathwayNet.R",
+    "project_path" : "R/GenePathwayNet.R",
+    "properties" : {
+        "cursorPosition" : "24,4",
+        "scrollLine" : "9"
+    },
+    "relative_order" : 9,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

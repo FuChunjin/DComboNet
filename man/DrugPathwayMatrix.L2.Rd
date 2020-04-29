@@ -28,10 +28,10 @@ list, in \code{as.data.frame} format must be provided, otherwise
 \emph{ERROR} information will be returned}
 
 \item{dataset}{GEO ID of LINCS datasets, two datasets are provided here:
-'70138' and '92742'}
+"70138" and "92742"}
 
 \item{cellline}{cancer cell lines name. If level two model is called
-(\code{model = 'L2'} in \code{DComboNet} or \code{L2.LOCOCV}). If requested
+(\code{model = "L2"} in \code{DComboNet} or \code{L2.LOCOCV}). If requested
 cell line is included in the default cancer cell line list, \code{dDEG} do
 not need to provided unless particular drug induced differentially
 expressed gene list you want to include in the gene network, then provided
@@ -41,7 +41,7 @@ in the current cell line list, you should provide \code{cellline} and
 information will be returned}
 
 \item{treatment_time}{drug treatment time provided in LINCS database. For
-example, MCF7 cell line (\code{cellline = 'MCF7'}) provided two time points
+example, MCF7 cell line (\code{cellline = "MCF7"}) provided two time points
 in LINCS GSE70138 dataset - 6 hour and 12 hour - \code{6} or \code{12}
 should be taken as input here, as numeric or character}
 
@@ -71,19 +71,19 @@ The function \code{DrugPathwayMatrix.L2} is to generate
 \examples{
 #
 # loading files
-load_dir = 'G:/lab/DCcomboNet/Rpackage/input_data/'
-drugnet_feature = read.table(paste0(load_dir,'drug_net/features.csv'),
-sep=',',header=TRUE, stringsAsFactors = FALSE)
+load_dir = "G:/lab/DCcomboNet/Rpackage/input_data/"
+drugnet_feature = read.table(paste0(load_dir,"drug_net/features.csv"),
+sep=",",header=TRUE, stringsAsFactors = FALSE)
 drugnet_feature = drugnet_feature[drugnet_feature$integrated_score2 >=0.2,]
-drugtarget = read.table(paste0(load_dir,'data/drugtarget.csv'), sep =
-',',header = TRUE, stringsAsFactors = FALSE)
+drugtarget = read.table(paste0(load_dir,"data/drugtarget.csv"), sep =
+",",header = TRUE, stringsAsFactors = FALSE)
 drugDEG = NULL
-# or drugDEG = data.frame(drug = 'Sorafenib', target = c('FOSL1', 'TUBB6'))
-dataset = '92742'
-cellline = 'HEPG2'
-t='6'
+# or drugDEG = data.frame(drug = "Sorafenib", target = c("FOSL1", "TUBB6"))
+dataset = "92742"
+cellline = "HEPG2"
+t="6"
 drugnet_adj = AdjMatrix_drugs(x = drugnet_feature, weighted = TRUE,
-weight.type = 'integrated_score')
+weight.type = "integrated_score")
 PathwayNetwork = read.table(paste0(load_dir,"pathway/WWI.txt"), sep = "\t",
 header =TRUE, stringsAsFactors = FALSE)
 dDEpweight = 1

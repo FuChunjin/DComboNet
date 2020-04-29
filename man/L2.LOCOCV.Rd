@@ -45,7 +45,7 @@ L2.LOCOCV(
 
 \item{model}{choose model type, two models here to choose: "L1", "L2"}
 
-\item{drugcandidate}{drug and its corresponding 'drugbank ID' in \code{data
+\item{drugcandidate}{drug and its corresponding "drugbank ID" in \code{data
 frame}}
 
 \item{CDK_FP}{Drug fingerprint matrix generated from PEDAL}
@@ -55,12 +55,12 @@ frame}}
 \item{MACCS_FP}{Drug MACCS fingerprint matrix generated from PEDAL}
 
 \item{drugnetWeight}{\code{TRUE/FALSE}, choose if the edge of drug network
-should be weighted by feature values. The abbreviationS '\code{T/F}' are
+should be weighted by feature values. The abbreviationS "\code{T/F}" are
 also acceptable}
 
-\item{featuretype}{if parameter '\code{weighted = TRUE/T}', choose the
+\item{featuretype}{if parameter "\code{weighted = TRUE/T}", choose the
 feature type to weight the edge of drug-drug network. The options are:
-'ATCsim','STsim','SEsim','integrated_score','integrated_score2'}
+"ATCsim","STsim","SEsim","integrated_score","integrated_score2"}
 
 \item{drugtarget}{drug-target gene interaction file in \code{data.frame}
 format (otherwise \code{as.data.frame} can be used to transform the format
@@ -74,10 +74,10 @@ publications or from IPA tool. Gene name should be converted to official
 gene names (i.e. HGNC gene symbols)}
 
 \item{dataset}{GEO ID of LINCS datasets, two datasets are provided here:
-'70138' and '92742'}
+"70138" and "92742"}
 
 \item{cellline}{cancer cell lines name. If level two model is called
-(\code{model = 'L2'} in \code{\link{DComboNet}} or
+(\code{model = "L2"} in \code{\link{DComboNet}} or
 \code{\link{L2.LOCOCV}}). If requested cell line is included in the default
 cancer cell line list, \code{dDEG} do not need to provided unless
 particular drug induced differentially expressed gene list you want to
@@ -88,7 +88,7 @@ construct specific gene network, otherwise \emph{ERROR} information will be
 returned}
 
 \item{treatment_time}{drug treatment time provided in LINCS database. For
-example, MCF7 cell line (\code{cellline = 'MCF7'}) provided two time points
+example, MCF7 cell line (\code{cellline = "MCF7"}) provided two time points
 in LINCS GSE\code{70138} dataset - 6 hour and 12 hour - \code{6} or
 \code{12} should be taken as input here, as numeric or character}
 
@@ -149,6 +149,6 @@ Ranked result tables of global proximity between drug seed and other
   be saved under the path \code{resultdir} provided by user.
 }
 \description{
-the function 'L2.LOCOCV' is to predict possible drug to pair
+the function "L2.LOCOCV" is to predict possible drug to pair
   with the drug candidate without expression data
 }
