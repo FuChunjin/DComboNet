@@ -21,15 +21,8 @@
 drugATCprep <- function(druglist = NULL,
                         load_dir){
 
-  load(system.file("data", "drug_atc_lib.Rdata", package = "DComboNet"))
-  load(system.file("data", "druglistlib.Rdata", package = "DComboNet"))
-
-  # all_drug_atc <- read.csv(paste0(load_dir,"data/ALL_DRUG_ATC_CODE_KRGG.txt"), sep = "\t", header = F, stringsAsFactors = F)
-  # druglistlib = read.csv(paste0(load_dir,"data/druglist.csv"),stringsAsFactors = F)
-  # all_drug_atc.path = system.file("extdata", "ALL_DRUG_ATC_CODE_KRGG.txt", package = "DComboNet")
-  # druglistlib.path = system.file("extdata", "druglist.csv", package = "DComboNet")
-  # all_drug_atc <- read.table(all_drug_atc.path, sep = "\t", header = T, stringsAsFactors = F)
-  # druglistlib = read.table(druglistlib.path, sep = ",", header = T, stringsAsFactors = F)
+  # load(system.file("data", "drug_atc_lib.RData", package = "DComboNet"))
+  # load(system.file("data", "druglistlib.RData", package = "DComboNet"))
 
   if(!is.null(druglist)){
     druglist = data.frame(drugname = union(druglist[,1],druglistlib[,1]))
@@ -73,7 +66,7 @@ drugATCprep <- function(druglist = NULL,
 #' druglist = data.frame(drug = "Sorafenib")
 #' load_dir = "G:/lab/DCcomboNet/Rpackage/input_data/"
 #' drug_atc = drugATCprep(druglist = druglist, load_dir = load_dir)
-#' ATC.Dis(drug_atc = drug_atc, load_dir = load_dir)
+#' ATC_dis = ATC.Dis(drug_atc = drug_atc, load_dir = load_dir)
 #'
 
 ATC.Dis <-function(drug_atc,
@@ -81,7 +74,7 @@ ATC.Dis <-function(drug_atc,
 
   if (requireNamespace("igraph")){
 
-    load(system.file("data", "atc_net.Rdata", package = "DComboNet"))
+    # load(system.file("data", "atc_net.RData", package = "DComboNet"))
     # ATC <- igraph::read.graph(paste0(load_dir,"/data/ATC_NET/ATC_network.net"),format="pajek")
     # nodes <- read.csv(paste0(load_dir,"/data/ATC_NET/ATC_node.txt"),sep=" ",header=F, stringsAsFactors = F)
 
@@ -257,7 +250,7 @@ structure.sim <- function(CDK_FP=NULL,
 
     c.FP.tanimoro = compiler::cmpfun(FP.tanimoro)
 
-    load(system.file("data", "fingerprint_lib.Rdata", package = "DComboNet"))
+    # load(system.file("data", "fingerprint_lib.RData", package = "DComboNet"))
     # CDK_FP_lib = read.csv(paste0(load_dir,"/data/fingerprints/fingerprints.csv"),stringsAsFactors = F)
     # pubchemFP_lib = read.csv(paste0(load_dir,"/data/fingerprints/pubchem_fingerprints.csv"),stringsAsFactors = F)
     # MACCS_FP_lib = read.csv(paste0(load_dir,"/data/fingerprints/MACCS_fingerprints.csv"),stringsAsFactors = F)
@@ -323,7 +316,7 @@ drugSEprep <- function(druglist = NULL,
   # all_side_effect = read.delim(paste0(load_dir,"data/side-effects.tsv"),sep="\t",header = T,stringsAsFactors = F)
   # drugselib = read.csv(paste0(load_dir,"data/drug_se.txt"),sep="\t",header=T, stringsAsFactors = F)
 
-  load(system.file("data", "drug_sideeffect.Rdata", package = "DComboNet"))
+  # load(system.file("data", "drug_sideeffect.RData", package = "DComboNet"))
 
   if(is.null(druglist)){
     drug_SE = drugselib
@@ -367,7 +360,8 @@ SE.sim <- function(druglist=NULL, load_dir){
   if (requireNamespace("compiler")){
 
     c.drugSEprep = compiler::cmpfun(drugSEprep)
-    load(system.file("data", "drug_sideeffect.Rdata", package = "DComboNet"))
+
+    # load(system.file("data", "drug_sideeffect.RData", package = "DComboNet"))
 
     if(!is.null(druglist)){
 
@@ -474,8 +468,8 @@ DrugNetFeature <- function(druglist = NULL,
 
   if(requireNamespace(c("reshape2","compiler"))){
 
-    load(system.file("data", "drugpair_lib.Rdata", package = "DComboNet"))
-    load(system.file("data", "druglistlib.Rdata", package = "DComboNet"))
+    # load(system.file("data", "drugpair_lib.RData", package = "DComboNet"))
+    # load(system.file("data", "druglistlib.RData", package = "DComboNet"))
 
     c.ATC.sim = compiler::cmpfun(ATC.sim)
     c.structure.sim = compiler::cmpfun(structure.sim)

@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1588482570857.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3054463536",
+    "id" : "C965E29D",
+    "lastKnownWriteTime" : 1588488804,
+    "last_content_update" : 1588488805162,
+    "path" : "G:/lab/DCcomboNet/Rpackage/input_data/DComboNet/test/test.R",
+    "project_path" : "test/test.R",
+    "properties" : {
+        "cursorPosition" : "0,0",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 12,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

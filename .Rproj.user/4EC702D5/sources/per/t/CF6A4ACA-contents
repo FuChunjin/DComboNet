@@ -251,8 +251,8 @@ DComboNet <- function(load_dir,
     c.transitionMatrix = compiler::cmpfun(TransitionMatrix)
 
     #loading internal data
-    load(system.file("data", "druglistlib.Rdata", package = "DComboNet"))
-    load(system.file("data", "pathway_pathway_interaction.Rdata", package = "DComboNet"))
+    # load(system.file("data", "druglistlib.RData", package = "DComboNet"))
+    # load(system.file("data", "pathway_pathway_interaction.RData", package = "DComboNet"))
 
 
     #timestart<-Sys.time()
@@ -484,11 +484,11 @@ DComboNet <- function(load_dir,
 
     if(model =="L1"){
 
-      save(multiplex_df, genenet, genepathwaynet, file = paste0(resultdir,model,"_result/potential_net/net_data.Rdata"))
+      save(multiplex_df, genenet, genepathwaynet, file = paste0(resultdir,model,"_result/potential_net/net_data.RData"))
 
       }else if(model == "L2"){
 
-      save(multiplex_df, genenet, genepathwaynet, file = paste0(resultdir,model,"_result/potential_net/",cellline,"_net_data.Rdata"))
+      save(multiplex_df, genenet, genepathwaynet, file = paste0(resultdir,model,"_result/potential_net/",cellline,"_net_data.RData"))
     }
 
     N.gene = nrow(geneadj)
@@ -701,8 +701,8 @@ L1.LOCOCV <- function(load_dir,
     c.transitionMatrix = compiler::cmpfun(TransitionMatrix)
 
     #loading internal data
-    load(system.file("data", "druglistlib.Rdata", package = "DComboNet"))
-    load(system.file("data", "pathway_pathway_interaction.Rdata", package = "DComboNet"))
+    # load(system.file("data", "druglistlib.RData", package = "DComboNet"))
+    # load(system.file("data", "pathway_pathway_interaction.RData", package = "DComboNet"))
 
 
     #timestart<-Sys.time()
@@ -1174,8 +1174,8 @@ L2.LOCOCV <- function(load_dir,
     c.transitionMatrix = compiler::cmpfun(TransitionMatrix)
 
     #loading internal data
-    load(system.file("data", "druglistlib.Rdata", package = "DComboNet"))
-    load(system.file("data", "pathway_pathway_interaction.Rdata", package = "DComboNet"))
+    # load(system.file("data", "druglistlib.RData", package = "DComboNet"))
+    # load(system.file("data", "pathway_pathway_interaction.RData", package = "DComboNet"))
 
 
     #timestart<-Sys.time()

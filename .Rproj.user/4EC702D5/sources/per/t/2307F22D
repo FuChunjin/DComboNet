@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "1488738713",
+    "hash" : "2032718883",
     "id" : "2307F22D",
-    "lastKnownWriteTime" : 1588132963,
-    "last_content_update" : 1588132963,
+    "lastKnownWriteTime" : 1588148146,
+    "last_content_update" : 1588148146,
     "path" : "G:/lab/DCcomboNet/Rpackage/input_data/DComboNet/R/DrugNetFeatures.R",
     "project_path" : "R/DrugNetFeatures.R",
     "properties" : {
-        "cursorPosition" : "380,59",
-        "scrollLine" : "376"
+        "cursorPosition" : "18,56",
+        "scrollLine" : "0"
     },
     "relative_order" : 8,
     "source_on_save" : false,

@@ -26,7 +26,7 @@ cancerGene = function(cellline,
                       load_dir){
   # ccleexpr = read.table(paste0(load_dir,"data/celllineExpr/CCLEexprMatrix.txt"),
   # sep = "\t",header=T, stringsAsFactors = F)
-  load(paste0(load_dir, "data/celllineExpr/CCLEexprMatrix.Rdata"))
+  load(paste0(load_dir, "data/celllineExpr/CCLEexprMatrix.RData"))
 
   if(cellline %in% colnames(ccleexpr)){
     cell <- which(colnames(ccleexpr) == cellline)
@@ -124,10 +124,11 @@ geneNet <- function(dt = NULL,
 
   if (requireNamespace(c("igraph","dnet"))){
 
-    load(system.file("data", "drugtarget_lib.Rdata", package = "DComboNet"))
-    load(system.file("data", "druggene_lib.Rdata", package = "DComboNet"))
-    load(system.file("data", "cancer_gene_L1.Rdata", package = "DComboNet"))
-    load(system.file("data", "cellline_name.Rdata", package = "DComboNet"))
+    # load(system.file("data", "drugtarget_lib.RData", package = "DComboNet"))
+    # load(system.file("data", "druggene_lib.RData", package = "DComboNet"))
+    # load(system.file("data", "cancer_gene_L1.RData", package = "DComboNet"))
+    # load(system.file("data", "inBio_PPI_net.RData", package = "DComboNet"))
+    # load(system.file("data", "cellline_name.RData", package = "DComboNet"))
 
     # dt_lib = read.csv(paste0(load_dir,"data/drugtarget.csv"),stringsAsFactors = F)
     names(dt_lib) = c("Drug","Target")

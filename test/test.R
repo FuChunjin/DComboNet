@@ -5,7 +5,13 @@ manual_input = FALSE
 drugtarget = NULL #read.table(paste0(load_dir,'data/drugtarget.csv'), sep =  ',',header = TRUE, stringsAsFactors = FALSE)
 druggene = NULL
 
-
+DComboNet(load_dir = load_dir,
+          resultdir = resultdir,
+          model = "L1", # To choose level one model
+          manual_input = FALSE, # To shield manually input drug name
+          drugcandidate = drugcandidate,
+          drugnetWeight = TRUE, # Confirm if drug network should be weighted
+          featuretype = 'integrated_score')
 
 #2) runing level two model(L2)
 
@@ -49,7 +55,7 @@ drugnetWeight = TRUE
 featuretype = 'integrated_score'
 drugtarget = read.csv(paste0(outputdir,'drug_gene/drug_target_oci_ly3.csv'), sep = ',',header = T, stringsAsFactors = F)
 druggene = NULL
-dt_lib = read.csv(paste0(outputdir,'data/drugtarget.csv'))
+dt_lib = read.csv(paste0(outputdir,'drug_gene/drugtarget.csv'))
 
 cellline = 'OCILY3'
 drugDEG = read.table(paste0(outputdir,'drug_gene/DEG/drug_DEG_12hrs.txt'),sep='\t',header=T,stringsAsFactors = F)
@@ -66,7 +72,6 @@ DComboNet(load_dir = load_dir,
           resultdir = resultdir,
           model = 'L2',
           drugcandidate=drugcandidate,
-
           CDK_FP = CDK_FP,
           pubchemFP = pubchemFP,
           MACCS_FP = MACCS_FP,

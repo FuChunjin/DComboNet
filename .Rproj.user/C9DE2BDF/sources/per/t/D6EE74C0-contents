@@ -1,3 +1,5 @@
+
+
 load_dir = "G:/lab/DCcomboNet/Rpackage/input_data/"
 resultdir = "G:/lab/DCcomboNet/Rpackage/tryout_result/"
 drugcandidate = data.frame(drug = "Sorafenib", drug = "DB00398")
@@ -5,7 +7,13 @@ manual_input = FALSE
 drugtarget = NULL #read.table(paste0(load_dir,'data/drugtarget.csv'), sep =  ',',header = TRUE, stringsAsFactors = FALSE)
 druggene = NULL
 
-
+DComboNet(load_dir = load_dir,
+          resultdir = resultdir,
+          model = "L1", # To choose level one model
+          manual_input = FALSE, # To shield manually input drug name
+          drugcandidate = drugcandidate,
+          drugnetWeight = TRUE, # Confirm if drug network should be weighted
+          featuretype = 'integrated_score')
 
 #2) runing level two model(L2)
 

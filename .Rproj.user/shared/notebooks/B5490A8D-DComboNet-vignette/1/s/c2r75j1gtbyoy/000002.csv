@@ -1,0 +1,12 @@
+"0","DComboNet(load_dir = load_dir, 
+          resultdir = resultdir, 
+          model = ""L1"", # To choose level one model
+          manual_input = FALSE, # To shield manually input drug name
+          drugcandidate = drugcandidate, 
+          drugnetWeight = TRUE, # Confirm if drug network should be weighted
+          featuretype = 'integrated_score') # Select which drug-drug similarity should be use
+"
+"2","restarting interrupted promise evaluation"
+"2","internal error -3 in R_decompress1"
+"2","Error: lazy-load database 'C:/Users/fengf/Documents/R/win-library/3.5/DComboNet/R/DComboNet.rdb' is corrupt
+"
