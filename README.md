@@ -21,12 +21,14 @@ Due to the large size of drug-induced gene expression profiles for Level 2 model
 
 After install the package, you should download this compressed data set, unzip it and put in a reachable path. This path should be used as input for parameter ` load_dir` for functions in ` DComboNet`. For more details about using level two model with provided cancer sample specific data or your own data table, you can check the tutorial below.
 
-## Environment
-
 ## Tutorial  
 
 The detail usages of ` DComboNet`, can be found here: [Instruction](https://veronicafung.github.io/DComboNet/DComboNet-vignette.html) 
 
+
+## Environment
+
+` DComboNet` is developed in R version 3.5.1. For running the test code in Instruction, you can check the "sessionInfo" chapter for more detailed session information.
 
 ## Citation
 <!-- <div style = "width:120%; height:auto; margin: auto;"> -->
