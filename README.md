@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # DComboNet
 
 ## Introduction
