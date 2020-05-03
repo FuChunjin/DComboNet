@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # DComboNet
 
 ## Introduction
@@ -9,7 +8,7 @@ This tutorial provides the instruction of the main usage of this package fitting
 
 ## Package installation
 
-` DComboNet` has been upload in Github and can be install as follow:
+` DComboNet` has been upload in Github and can be install in R as follow:
 
 ```{r, eval=FALSE}
   install.packages("devtools")
@@ -18,7 +17,9 @@ This tutorial provides the instruction of the main usage of this package fitting
   library(DComboNet)
 ```
 
-Due to the large size of drug-induced gene expression profiles for Level 2 model, we prepared an extra data folder. After install the package, you should download this compressed data set, unzip it and put in a reachable path. This path should be used as ` load_dir` for functions in DComboNet.
+Due to the large size of drug-induced gene expression profiles for Level 2 model, we upload only cell line data for repeating the results in our manuscripts, for more cell lines, we prepare an extra data folder in [links]<links>. 
+
+After install the package, you should download this compressed data set, unzip it and put in a reachable path. This path should be used as input for parameter ` load_dir` for functions in ` DComboNet`. For more details about using level two model with provided cancer sample specific data or your own data table, you can check the tutorial below.
 
 ## Environment
 
