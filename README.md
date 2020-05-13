@@ -23,6 +23,7 @@ After install the package, you should download this compressed data set, unzip i
 
 ## Tutorial  
 
+After installing package, you can use sample code in folder "test" for  testing.
 The detail usages of ` DComboNet`, can be found here: [Instruction](https://veronicafung.github.io/DComboNet/DComboNet-vignette.html) 
 
 
